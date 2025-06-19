@@ -1,0 +1,51 @@
+/* Fondo oscuro y centro */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Corazón base */
+.heart {
+  position: relative;
+  width: 100px;
+  height: 90px;
+  background-color: #ff4b5c;
+  transform: rotate(-45deg);
+  animation: beat 1.6s infinite ease-in-out;
+}
+
+/* Mitades redondeadas */
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 90px;
+  background-color: #ff4b5c;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+
+.heart::after {
+  left: 50px;
+  top: 0;
+}
+
+/* Animación de latido suave */
+@keyframes beat {
+  0%, 100% {
+    transform: rotate(-45deg) scale(1);
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.15);
+  }
+}
