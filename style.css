@@ -1,51 +1,56 @@
-/* Fondo oscuro y centro */
+/* Fondo oscuro y sin márgenes */
 body {
   margin: 0;
-  padding: 0;
   background-color: #000;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
 }
 
-/* Corazón base */
-.heart {
+#heart-container {
   position: relative;
-  width: 100px;
-  height: 90px;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Estilo para cada mini corazón */
+.heart {
+  position: absolute;
+  width: 10px;
+  height: 9px;
   background-color: #ff4b5c;
   transform: rotate(-45deg);
-  animation: beat 1.6s infinite ease-in-out;
+  animation: appear 2s ease-out forwards;
+  opacity: 0;
 }
 
-/* Mitades redondeadas */
 .heart::before,
 .heart::after {
   content: "";
   position: absolute;
-  width: 100px;
-  height: 90px;
+  width: 10px;
+  height: 9px;
   background-color: #ff4b5c;
   border-radius: 50%;
 }
 
 .heart::before {
-  top: -50px;
+  top: -5px;
   left: 0;
 }
 
 .heart::after {
-  left: 50px;
+  left: 5px;
   top: 0;
 }
 
-/* Animación de latido suave */
-@keyframes beat {
-  0%, 100% {
-    transform: rotate(-45deg) scale(1);
+/* Animación de aparición */
+@keyframes appear {
+  0% {
+    transform: translateY(200px) scale(0.3) rotate(-45deg);
+    opacity: 0;
   }
-  50% {
-    transform: rotate(-45deg) scale(1.15);
+  100% {
+    transform: translateY(0) scale(1) rotate(-45deg);
+    opacity: 1;
   }
 }
+
